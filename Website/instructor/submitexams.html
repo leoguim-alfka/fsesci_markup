@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+	<link rel="shortcut icon" type="image/png" href="../ico/favico.png">
+	<title>Florida Stormwater, Erosion, and Sedimentation Control Inspector Training & Certification Program</title>
+  </head>
+  
+  <body style="background-color: #e6f2ff;">
+	<div class="container">
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e6f2ff;">
+			<a class="navbar-brand" href="#">
+				<img src="../ico/FSESCI.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+					FSESCI
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="index.html">Instructor Profile</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="classes.html">Schedule Classes</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="#">Submit Exams <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="resetpass.html">Reset Password</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../index.html">Log Out</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	
+	<!-- START MAIN PAGE CONTENT -->
+	<div class="card border-dark mb-3">
+	  <div class="card-header">
+		<h5>Submit Graded Exams and Documents</h5>
+	  </div>
+		<div class="card-body">
+			<form id="newClass" action="classes.html" class="d-block">	
+			  <div class="form-group row">
+				<label for="selectClass" class="col-sm-3 col-form-label">Date and Location</label>
+				<div class="col-sm-9">
+					<select class="custom-select" id="selectClass" required>
+						<option disabled selected value> -- Select a Class -- </option>
+						<option>[DATE1] [CLASS FULL ADDRESS1]</option>
+						<option>[DATE2] [CLASS FULL ADDRESS2]</option>
+						<option>[DATE3] [CLASS FULL ADDRESS3]</option>
+					</select>
+				</div>
+			  </div>
+			  <fieldset class="form-group">
+				<div class="row">
+					<legend class="col-form-label col-sm-3 pt-0">Are CEUs Provided?</legend>
+					<div class="col-sm-2">
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="ceuRadios" id="ceuRadios1" value=1 required>
+							<label class="form-check-label" for="gridRadios1">
+								Yes
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="ceuRadios" id="ceuRadios2" value=0>
+							<label class="form-check-label" for="gridRadios2">
+								No
+							</label>
+						</div>
+					</div>
+					<div class="col-sm-7">
+						<div class="custom-file">
+							<input type="file" class="custom-file-input" id="ceuFile" accept="application/pdf" required>
+							<label class="custom-file-label" for="ceuFile">Upload CEU (pdf)</label>
+						</div>
+					</div>
+				</div>
+			  </fieldset>
+			  <div class="form-group row">
+				<legend class="col-form-label col-sm-3 pt-0">Graded Exams</legend>
+				<div class="col-sm-9">
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" id="examFile" accept="application/pdf" required>
+						<label class="custom-file-label" for="examFile">Upload graded exams with signature pages (pdf)</label>
+					</div>
+				</div>
+			  </div>
+			  <div class="form-group row">
+				<legend class="col-form-label col-sm-3 pt-0">Instructor Evaluations</legend>
+				<div class="col-sm-9">
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" id="evalFile" accept="application/pdf" required>
+						<label class="custom-file-label" for="evalFile">Upload instructor evaluations (pdf)</label>
+					</div>
+				</div>
+			  </div>
+			  <div class="form-group row">
+				<legend class="col-form-label col-sm-3 pt-0">Syllabus</legend>
+				<div class="col-sm-9">
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" id="sylFile" accept="application/pdf" required>
+						<label class="custom-file-label" for="sylFile">Upload syllabus used in class (pdf)</label>
+					</div>
+				</div>
+			  </div>
+			  <div class="form-group row">
+				<legend class="col-form-label col-sm-3 pt-0">Sign-In Sheet</legend>
+				<div class="col-sm-9">
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" id="signFile" accept="application/pdf" required>
+						<label class="custom-file-label" for="signFile">Upload <b>signed</b> sign-in sheets (pdf)</label>
+					</div>
+				</div>
+			  </div>
+			  <div class="form-group row">
+				<legend class="col-form-label col-sm-3 pt-0">Score Spreadsheet</legend>
+				<div class="col-sm-9">
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" id="scoreFile" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
+						<label class="custom-file-label" for="scoreFile">Upload Excel Spreadsheet of Graded Exams</label>
+					</div>
+				</div>
+			  </div>
+				<button type="submit" class="btn btn-primary btn-lg btn-block">Submit Exam Documents</button>
+			</form>		
+		</div>
+	</div>
+	
+	
+	<!--BEGIN FOOTER-->
+	<footer class="footer mt-auto py-3">
+		<div class="container">
+			<span class="text-muted">© Copyright 2020 Florida Department of Environmental Protection</span>
+		</div>
+	</footer>
+	
+  </div>
+  
+
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
