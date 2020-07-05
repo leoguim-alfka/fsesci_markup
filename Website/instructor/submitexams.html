@@ -83,8 +83,8 @@
 					</div>
 					<div class="col-sm-7">
 						<div class="custom-file">
-							<input type="file" class="custom-file-input" id="ceuFile" accept="application/pdf" required>
-							<label class="custom-file-label" for="ceuFile">Upload CEU (pdf)</label>
+							<input type="file" class="custom-file-input" id="fileCEU" accept="application/pdf" required>
+							<label class="custom-file-label" for="fileCEU">Upload CEU (pdf)</label>
 						</div>
 					</div>
 				</div>
@@ -93,8 +93,8 @@
 				<legend class="col-form-label col-sm-3 pt-0">Graded Exams</legend>
 				<div class="col-sm-9">
 					<div class="custom-file">
-						<input type="file" class="custom-file-input" id="examFile" accept="application/pdf" required>
-						<label class="custom-file-label" for="examFile">Upload graded exams with signature pages (pdf)</label>
+						<input type="file" class="custom-file-input" id="fileExam" accept="application/pdf" required>
+						<label class="custom-file-label" for="fileExam">Upload graded exams with signature pages (pdf)</label>
 					</div>
 				</div>
 			  </div>
@@ -102,8 +102,8 @@
 				<legend class="col-form-label col-sm-3 pt-0">Instructor Evaluations</legend>
 				<div class="col-sm-9">
 					<div class="custom-file">
-						<input type="file" class="custom-file-input" id="evalFile" accept="application/pdf" required>
-						<label class="custom-file-label" for="evalFile">Upload instructor evaluations (pdf)</label>
+						<input type="file" class="custom-file-input" id="fileEval" accept="application/pdf" required>
+						<label class="custom-file-label" for="fileEval">Upload instructor evaluations (pdf)</label>
 					</div>
 				</div>
 			  </div>
@@ -111,8 +111,8 @@
 				<legend class="col-form-label col-sm-3 pt-0">Syllabus</legend>
 				<div class="col-sm-9">
 					<div class="custom-file">
-						<input type="file" class="custom-file-input" id="sylFile" accept="application/pdf" required>
-						<label class="custom-file-label" for="sylFile">Upload syllabus used in class (pdf)</label>
+						<input type="file" class="custom-file-input" id="fileSyl" accept="application/pdf" required>
+						<label class="custom-file-label" for="fileSyl">Upload syllabus used in class (pdf)</label>
 					</div>
 				</div>
 			  </div>
@@ -120,8 +120,8 @@
 				<legend class="col-form-label col-sm-3 pt-0">Sign-In Sheet</legend>
 				<div class="col-sm-9">
 					<div class="custom-file">
-						<input type="file" class="custom-file-input" id="signFile" accept="application/pdf" required>
-						<label class="custom-file-label" for="signFile">Upload <b>signed</b> sign-in sheets (pdf)</label>
+						<input type="file" class="custom-file-input" id="fileSign" accept="application/pdf" required>
+						<label class="custom-file-label" for="fileSign">Upload <b>signed</b> sign-in sheets (pdf)</label>
 					</div>
 				</div>
 			  </div>
@@ -129,8 +129,8 @@
 				<legend class="col-form-label col-sm-3 pt-0">Score Spreadsheet</legend>
 				<div class="col-sm-9">
 					<div class="custom-file">
-						<input type="file" class="custom-file-input" id="scoreFile" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
-						<label class="custom-file-label" for="scoreFile">Upload Excel Spreadsheet of Graded Exams</label>
+						<input type="file" class="custom-file-input" id="fileScore" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
+						<label class="custom-file-label" for="fileScore">Upload Excel Spreadsheet of Graded Exams</label>
 					</div>
 				</div>
 			  </div>
@@ -157,5 +157,14 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script>
+	$("[id^=file]").on('change',function(){
+		//get the file name
+		var fileName = $(this).val();
+		var cleanFileName = fileName.replace('C:\\fakepath\\', " ");
+		//replace the "Choose a file" label
+		$(this).next('.custom-file-label').html(cleanFileName);
+	})
+    </script>
   </body>
 </html>
