@@ -58,9 +58,9 @@
 				<div class="col-sm-9">
 					<select class="custom-select" id="selectClass" required>
 						<option disabled selected value> -- Select a Class -- </option>
-						<option>[DATE1] [CLASS FULL ADDRESS1]</option>
-						<option>[DATE2] [CLASS FULL ADDRESS2]</option>
-						<option>[DATE3] [CLASS FULL ADDRESS3]</option>
+						<option>2020-07-15 - Tampa</option>
+						<option>2020-07-05 - Orlando</option>
+						<option>2020-03-12 - Miami</option>
 					</select>
 				</div>
 			  </div>
@@ -82,8 +82,8 @@
 						</div>
 					</div>
 					<div class="col-sm-7">
-						<div class="custom-file">
-							<input type="file" class="custom-file-input" id="fileCEU" accept="application/pdf" required>
+						<div class="custom-file d-none" id="pdfCEU">
+							<input type="file" class="custom-file-input" id="fileCEU" accept="application/pdf">
 							<label class="custom-file-label" for="fileCEU">Upload CEU (pdf)</label>
 						</div>
 					</div>
@@ -129,12 +129,23 @@
 				<legend class="col-form-label col-sm-3 pt-0">Score Spreadsheet</legend>
 				<div class="col-sm-9">
 					<div class="custom-file">
-						<input type="file" class="custom-file-input" id="fileScore" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
+						<input type="file" class="custom-file-input" id="fileScore" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/excel" required>
 						<label class="custom-file-label" for="fileScore">Upload Excel Spreadsheet of Graded Exams</label>
 					</div>
 				</div>
 			  </div>
-				<button type="submit" class="btn btn-primary btn-lg btn-block">Submit Exam Documents</button>
+			  <div class="form-group row">
+					<div class="form-group col-md-6">
+						<label for="tdate">Today's Date</label>
+						<input type="text" class="form-control" id="tdate" disabled>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="cdate">Class Date</label>
+						<input type="date" class="form-control" id="cdate" disabled>
+					</div>
+			  </div>
+			  <p><b id="dateMessage"></b><p>
+				<button type="submit" class="btn btn-primary btn-lg btn-block" id="submitButton">Submit Exam Documents</button>
 			</form>		
 		</div>
 	</div>
@@ -157,7 +168,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<script>
+	<script type="text/javascript">
 	$("[id^=file]").on('change',function(){
 		//get the file name
 		var fileName = $(this).val();
@@ -166,5 +177,65 @@
 		$(this).next('.custom-file-label').html(cleanFileName);
 	})
     </script>
+	<!-- Validation for CEUs -->
+	<script type="text/javascript">
+		var tdate = document.getElementById("tdate");
+		var today = new Date();
+		tdate.value = today.toJSON().split('T')[0].split('-')[1] + "/" + today.toJSON().split('T')[0].split('-')[2] + "/" + today.toJSON().split('T')[0].split('-')[0];
+		
+		document.getElementById("ceuRadios1").addEventListener("click", function(){ validateDate(); });
+		document.getElementById("ceuRadios2").addEventListener("click", function(){ validateDate(); });		
+		document.getElementById("selectClass").addEventListener("change", function(){ validateDate(); });
+		
+		function validateDate(){
+			var selectClass = document.getElementById("selectClass").value;
+			var classDate = selectClass.split(" - ")[0];
+			var cdate = document.getElementById("cdate");
+			cdate.value = classDate;
+			var tdate = document.getElementById("tdate");
+			var yesCEU = document.getElementById("ceuRadios1");
+			var noCEU = document.getElementById("ceuRadios2");
+			var dateDiff = daysdifference(new Date(tdate.value), new Date(cdate.value));
+			var dateMessage = document.getElementById("dateMessage");
+			var submitButton = document.getElementById("submitButton");
+			if(dateDiff > 4 && yesCEU.checked)
+			{
+			dateMessage.innerHTML = "Exam Package cannot be submitted with CEUs. CEU documents need to be submitted within two days of the exam date.";
+			submitButton.disabled = true;
+			}else if (dateDiff > 17 && noCEU.checked)
+			{
+			dateMessage.innerHTML = "Exam Package cannot be submitted. Exam packages need to be submitted within two weeks of the exam date.";
+			submitButton.disabled = true;
+			}else{
+			dateMessage.innerHTML = "";
+			submitButton.disabled = false;
+			}
+			if (yesCEU.checked)
+			{
+				pdfCEU.className = "custom-file";
+				fileCEU.required = true;
+			} 
+			if (noCEU.checked)
+			{
+				pdfCEU.className = "custom-file d-none";
+				fileCEU.required = false;
+			}
+			return;
+		}
+		
+		function daysdifference(date1, date2) {
+            // The number of milliseconds in one day
+            var ONEDAY = 1000 * 60 * 60 * 24;
+            // Convert both dates to milliseconds
+            var date1_ms = date1.getTime();
+            var date2_ms = date2.getTime();
+            // Calculate the difference in milliseconds
+            var difference_ms = Math.abs(date1_ms - date2_ms);
+
+            // Convert back to days and return
+            return Math.round(difference_ms/ONEDAY);
+		}
+
+	</script>
   </body>
 </html>
