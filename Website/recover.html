@@ -45,7 +45,7 @@
 						<a class="nav-link" href="newinstructor.html">Become an Instructor</a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" href="#">Log In<span class="sr-only">(current)</span></a>
+						<a class="nav-link" href="login.html">Log In<span class="sr-only">(current)</span></a>
 					</li>
 				</ul>
 			</div>
@@ -58,7 +58,8 @@
 	<div class="card border-dark mb-3">
 		<div class="card-header"><h5>FSESCI Portal</h5></div>
 		<div class="card-body">
-			<form id="instructorApp" action="#" class="d-block">
+		<p>Please complete the information below to recover your password. The FSESCI ID and Email provided need to match those on file to request a password recovery.</p>
+			<form action="#" class="d-block">
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="userId">User ID</label>
@@ -66,8 +67,8 @@
 						<input type="number" class="form-control" id="userId" required>
 					</div>
 					<div class="form-group col-md-6">
-						<label for="userPassword">Password</label>
-						<input type="password" class="form-control" id="userPassword"  required>
+						<label for="userEmail">Email</label>
+						<input type="email" class="form-control" id="userEmail" required>
 					</div>
 				</div>				
 				<div class="form-row">
@@ -80,18 +81,11 @@
 						</select>
 					</div>
 				</div>
-				<button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+				<button type="submit" class="btn btn-primary btn-lg btn-block">Recover Password</button>
 			</form>
 		</div>
 		<div class="card-footer text-center">
-			<div class="row">
-				<div class="col-md-6">
-					<a class="btn btn-info btn-block" href="signup.html" role="button">Create Account</a>
-				</div>			
-				<div class="col-md-6">
-					<a class="btn btn-info btn-block" href="recover.html" role="button">Reset Password</a>
-				</div>
-			</div>
+		<p>If you are having trouble resetting your password, please email: <a href="mailto:admin@fsesci.com?subject=FSESCI%20Password%20Error">admin@fsesci.com</a>.</p>
 		</div>
 	</div>	
 	
